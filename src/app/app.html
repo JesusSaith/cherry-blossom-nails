@@ -1,24 +1,125 @@
-<div class="shell">
-  <mat-toolbar class="toolbar">
-    <span class="brand">{{ title() }}</span>
-  </mat-toolbar>
+<header class="top" [class.solid]="navSolid()">
+  <a class="brand" href="#inicio">
+    <img class="mark" ngSrc="logo.png" width="960" height="960" alt="" />
+    Cherry Blossom
+  </a>
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#pasos">Cómo funciona</a>
+    <a href="#faq">Preguntas</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
 
-  <main class="content">
-    <mat-card class="welcome" appearance="outlined">
-      <mat-card-header>
-        <mat-card-title>Proyecto listo</mat-card-title>
-        <mat-card-subtitle>Angular, Material y Google Fonts</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <h1>{{ title() }}</h1>
-        <p>
-          La base del sitio ya está inicializada. Outfit lleva el texto y Cormorant Garamond los
-          títulos.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button matButton="filled" type="button">Angular Material</button>
-      </mat-card-actions>
-    </mat-card>
-  </main>
-</div>
+<main id="inicio">
+  <section class="hero">
+    <p class="tag">El arte está en ti</p>
+    <img class="logo" ngSrc="logo.png" width="960" height="960" alt="Logo Cherry Blossom" priority />
+    <h1>Salón de uñas</h1>
+    <p class="lead">Manicure y pedicure en un solo lugar.</p>
+    <div class="actions">
+      <a class="btn" [href]="instagram" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn ghost" href="#contacto">Cómo llegar</a>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <p class="kicker">Nosotras</p>
+    <h2>Cuidado para manos y pies</h2>
+    <p>Diseño, esmaltado y cuidado. Elige el servicio y escríbenos por Instagram.</p>
+  </section>
+
+  <section id="servicios">
+    <p class="kicker">Servicios</p>
+    <h2>Qué hacemos</h2>
+    <div class="grid">
+      <article>
+        <span>01</span>
+        <h3>Manos</h3>
+        <p>Manicure, esmaltado y diseño de uñas.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Pies</h3>
+        <p>Pedicure y cuidado de los pies.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="trabajos">
+    <p class="kicker">Trabajos</p>
+    <h2>Manos y pies</h2>
+    <div class="gallery">
+      <figure>
+        <img ngSrc="work-1.jpg" width="768" height="1024" alt="Uñas con flores de cerezo" />
+        <figcaption>Flores</figcaption>
+      </figure>
+      <figure>
+        <img ngSrc="work-2.png" width="768" height="1024" alt="Uñas negras con estrellas" />
+        <figcaption>Negro</figcaption>
+      </figure>
+      <figure>
+        <img ngSrc="work-3.jpg" width="768" height="1024" alt="Uñas rojas con detalles dorados" />
+        <figcaption>Rojo</figcaption>
+      </figure>
+      <figure>
+        <img ngSrc="work-4.jpg" width="768" height="1024" alt="Uñas azul perlado" />
+        <figcaption>Azul</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="pasos">
+    <p class="kicker">Proceso</p>
+    <h2>Cómo funciona</h2>
+    <ol class="grid steps">
+      <li><span>01</span><h3>Elige</h3><p>Manos, pies o ambos.</p></li>
+      <li><span>02</span><h3>Escribe</h3><p>Mándanos mensaje por Instagram.</p></li>
+      <li><span>03</span><h3>Visítanos</h3><p>Te esperamos en el salón.</p></li>
+    </ol>
+  </section>
+
+  <section id="faq">
+    <p class="kicker">Preguntas</p>
+    <h2>Lo más común</h2>
+    <details open>
+      <summary>¿Hacen manos y pies?</summary>
+      <p>Sí. Manicure y pedicure.</p>
+    </details>
+    <details>
+      <summary>¿Cómo agendo?</summary>
+      <p>Por Instagram, en &#64;nailstudio_cherryblossom.</p>
+    </details>
+    <details>
+      <summary>¿Dónde están?</summary>
+      <p>En el mapa de la sección de contacto.</p>
+    </details>
+  </section>
+
+  <section id="contacto">
+    <p class="kicker">Contacto</p>
+    <h2>Encuéntranos</h2>
+    <p>
+      <a [href]="instagram" target="_blank" rel="noopener">&#64;nailstudio_cherryblossom</a>
+    </p>
+    @if (phone) {
+      <p><a [href]="'tel:' + phone">{{ phone }}</a></p>
+    }
+    <iframe
+      title="Ubicación de Cherry Blossom"
+      [src]="mapUrl"
+      width="600"
+      height="450"
+      style="border: 0"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+  </section>
+</main>
+
+<footer>
+  <span>Cherry Blossom</span>
+  <a [href]="instagram" target="_blank" rel="noopener">Instagram</a>
+  <a href="#contacto">Mapa</a>
+</footer>
