@@ -1,15 +1,82 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
   <head>
     <meta charset="utf-8" />
-    <title>Cherry Blossom Nails</title>
+    <title>Cherry Blossom Nail Studio | Salón de uñas · Manicure y pedicure</title>
+    <meta
+      name="description"
+      content="Cherry Blossom, salón de uñas. Manicure, pedicure, esmaltado y diseño de uñas a mano. El arte está en ti. Agenda tu cita por Instagram."
+    />
+    <meta name="theme-color" content="#c45378" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content="Cherry Blossom Nail Studio · El arte está en ti" />
+    <meta property="og:description" content="Salón de uñas: manicure, pedicure y diseño a mano. Agenda tu cita." />
+    <meta property="og:image" content="og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      #splash {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        background: #fdeef4;
+        transition: opacity 0.5s;
+      }
+      #splash.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #splash svg {
+        width: 120px;
+        height: 120px;
+      }
+      #splash ellipse {
+        fill: #f4b6cb;
+        transform-origin: 50px 50px;
+        animation: bloom 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      #splash circle {
+        fill: #c45378;
+      }
+      @keyframes bloom {
+        from {
+          transform: rotate(var(--r)) scale(0);
+        }
+        to {
+          transform: rotate(var(--r)) scale(1);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #splash ellipse {
+          animation: none;
+          transform: rotate(var(--r));
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NailSalon",
+        "name": "Cherry Blossom Nail Studio",
+        "slogan": "El arte está en ti",
+        "description": "Salón de uñas: manicure, pedicure, esmaltado y diseño de uñas.",
+        "image": "logo.png",
+        "geo": { "@type": "GeoCoordinates", "latitude": 18.814860023252457, "longitude": -96.72699504137019 },
+        "hasMap": "https://www.google.com/maps?q=18.814860023252457,-96.72699504137019",
+        "sameAs": ["https://www.instagram.com/nailstudio_cherryblossom"]
+      }
+    </script>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -18,6 +85,25 @@
     />
   </head>
   <body>
+    <div id="splash" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <ellipse cx="50" cy="28" rx="14" ry="22" style="--r: 0deg" />
+        <ellipse cx="50" cy="28" rx="14" ry="22" style="--r: 72deg; animation-delay: 0.08s" />
+        <ellipse cx="50" cy="28" rx="14" ry="22" style="--r: 144deg; animation-delay: 0.16s" />
+        <ellipse cx="50" cy="28" rx="14" ry="22" style="--r: 216deg; animation-delay: 0.24s" />
+        <ellipse cx="50" cy="28" rx="14" ry="22" style="--r: 288deg; animation-delay: 0.32s" />
+        <circle cx="50" cy="50" r="8" />
+      </svg>
+    </div>
+    <script>
+      addEventListener('load', () => {
+        const s = document.getElementById('splash');
+        setTimeout(() => {
+          s.classList.add('hide');
+          setTimeout(() => s.remove(), 600);
+        }, 700);
+      });
+    </script>
     <app-root></app-root>
   </body>
 </html>

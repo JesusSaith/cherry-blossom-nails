@@ -5,6 +5,27 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+// Tokens de marca.
+:root {
+  --surface: #fff;
+  --blush: #fdeef4;
+  --petal: #f4b6cb;
+  --rose: #e48aaa;
+  --ink: #8d4d63;
+  --accent: #c45378;
+  --glass: rgba(255, 255, 255, 0.75);
+  color-scheme: light;
+}
+
+html {
+  scrollbar-color: var(--rose) var(--blush);
+}
+
+::selection {
+  background: var(--petal);
+  color: var(--ink);
+}
+
 html {
   height: 100%;
   @include mat.theme(
@@ -29,7 +50,6 @@ body {
   // Default the application to a light color theme. This can be changed to
   // `dark` to enable the dark color theme, or to `light dark` to defer to the
   // user's system settings.
-  color-scheme: light;
 
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
@@ -41,4 +61,193 @@ body {
   // Reset the user agent margin.
   margin: 0;
   height: 100%;
+}
+
+// Animación de entrada al hacer scroll (directiva appReveal).
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+// Botón principal de la landing.
+.btn {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #c45378, #a33d62);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  box-shadow: 0 10px 22px rgba(196, 83, 120, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn mat-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+}
+
+/* Relleno que baja al pasar el cursor. */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: -100% 0 auto;
+  height: 100%;
+  z-index: -1;
+  background: #8d4d63;
+  transition: top 0.4s ease-in-out;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(196, 83, 120, 0.4);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  top: 0;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #c45378;
+  outline-offset: 3px;
+}
+
+.btn.small {
+  padding: 0.55rem 1.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+.btn.light {
+  background: #fff;
+  color: #8d4d63;
+}
+
+.btn.light:hover,
+.btn.light:focus-visible {
+  color: #fff;
+}
+
+.btn.outline-light {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: none;
+}
+
+.btn.light:focus-visible,
+.btn.outline-light:focus-visible {
+  outline-color: #fff;
+}
+
+// Botón flotante de WhatsApp.
+.wa-float {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  background: #128c7e;
+  border-radius: 50%;
+  box-shadow: 0 10px 24px rgba(18, 140, 126, 0.4);
+  transition: transform 0.3s;
+}
+
+.wa-float:hover {
+  transform: scale(1.08);
+}
+
+.wa-float:focus-visible {
+  outline: 3px solid #c45378;
+  outline-offset: 3px;
+}
+
+.wa-float svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
+@media (max-width: 720px) {
+  .wa-float {
+    bottom: 5.25rem;
+  }
+}
+
+// Botón para volver arriba, en forma de pétalo.
+.to-top {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #c45378, #8d4d63);
+  color: #fff;
+  border: 0;
+  border-radius: 150% 0 150% 0;
+  box-shadow: 0 10px 22px rgba(196, 83, 120, 0.35);
+  cursor: pointer;
+  animation: pop 0.3s ease-out;
+}
+
+.to-top:hover {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.to-top:focus-visible {
+  outline: 3px solid #c45378;
+  outline-offset: 3px;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@media (max-width: 720px) {
+  .to-top {
+    bottom: 5.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .to-top {
+    animation: none;
+  }
 }
