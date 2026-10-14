@@ -33,7 +33,7 @@ export interface Testimonial {
     }
 
     ul:focus-visible {
-      outline: 2px solid #c45378;
+      outline: 2px solid #9c4a5f;
       outline-offset: 4px;
       border-radius: 1rem;
     }
@@ -49,8 +49,8 @@ export interface Testimonial {
       width: 100%;
       height: auto;
       border: 6px solid var(--surface);
-      border-radius: 1.5rem;
-      box-shadow: 0 14px 30px rgba(196, 83, 120, 0.18);
+      border-radius: 0.75rem;
+      box-shadow: 0 14px 30px rgba(110, 70, 80, 0.09);
     }
   `,
 })

@@ -33,8 +33,8 @@ import { NgOptimizedImage } from '@angular/common';
       position: relative;
       overflow: hidden;
       border: 6px solid var(--surface);
-      border-radius: 2rem;
-      box-shadow: 0 18px 40px rgba(196, 83, 120, 0.2);
+      border-radius: 1rem;
+      box-shadow: 0 18px 40px rgba(110, 70, 80, 0.10);
     }
 
     img {
@@ -70,7 +70,7 @@ import { NgOptimizedImage } from '@angular/common';
       place-items: center;
       width: 44px;
       height: 44px;
-      background: #c45378;
+      background: #9c4a5f;
       color: #fff;
       border: 3px solid var(--surface);
       border-radius: 50%;
@@ -81,7 +81,7 @@ import { NgOptimizedImage } from '@angular/common';
       position: absolute;
       top: 1rem;
       padding: 0.25rem 0.8rem;
-      background: rgba(141, 77, 99, 0.85);
+      background: rgba(74, 48, 54, 0.85);
       color: #fff;
       font-size: 0.85rem;
       font-weight: 600;
@@ -107,7 +107,7 @@ import { NgOptimizedImage } from '@angular/common';
     }
 
     .frame:has(input:focus-visible) {
-      outline: 3px solid #c45378;
+      outline: 3px solid #9c4a5f;
       outline-offset: 3px;
     }
 

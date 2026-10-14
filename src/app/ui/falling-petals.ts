@@ -28,7 +28,7 @@ import { Component } from '@angular/core';
     span {
       position: absolute;
       top: -5vh;
-      background: linear-gradient(135deg, #fde4ee, #e48aaa);
+      background: linear-gradient(135deg, #f6e9e9, #c9959f);
       border-radius: 150% 0 150% 0;
       opacity: 0;
       animation: fall linear infinite;

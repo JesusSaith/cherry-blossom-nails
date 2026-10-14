@@ -14,7 +14,7 @@ import { Component, DestroyRef, ElementRef, afterNextRender, inject } from '@ang
       width: 14px;
       height: 14px;
       pointer-events: none;
-      background: linear-gradient(135deg, #fde4ee, #e48aaa);
+      background: linear-gradient(135deg, #f6e9e9, #c9959f);
       border-radius: 150% 0 150% 0;
       opacity: 0;
       transition: opacity 0.3s, transform 0.12s ease-out;

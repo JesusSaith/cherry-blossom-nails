@@ -7,7 +7,7 @@ export interface Hours {
   time: string;
 }
 
-/** Footer compacto en dos columnas: marca a la izquierda, enlaces y visita a la derecha. */
+/** Footer compacto en dos columnas: marca y redes a la izquierda, enlaces a la derecha. */
 @Component({
   selector: 'app-site-footer',
   imports: [MatIcon, SakuraTree],
@@ -19,23 +19,40 @@ export interface Hours {
     <div class="cols">
       <div class="about">
         <p class="brand">Cherry Blossom</p>
-        <p>El arte está en ti. Manicure, pedicure y diseño a mano.</p>
-        <a class="social" [href]="instagram()" target="_blank" rel="noopener" aria-label="Instagram de Cherry Blossom">
-          <mat-icon>photo_camera</mat-icon>
-        </a>
+        <div class="socials">
+          <a class="social" [href]="instagram()" target="_blank" rel="noopener" aria-label="Instagram de Cherry Blossom">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8" />
+              <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8" />
+              <circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" />
+            </svg>
+          </a>
+          @if (facebook()) {
+            <a class="social" [href]="facebook()" target="_blank" rel="noopener" aria-label="Facebook de Cherry Blossom">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H8v3h2.5V21z"
+                />
+              </svg>
+            </a>
+          }
+          @if (whatsapp()) {
+            <a class="social" [href]="whatsapp()" target="_blank" rel="noopener" aria-label="WhatsApp de Cherry Blossom">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.2-1.2-.2-.2-.5-.3z"
+                />
+              </svg>
+            </a>
+          }
+        </div>
       </div>
       <div class="right">
         <nav aria-label="Enlaces del pie">
-          <a href="#nosotros">Nosotras</a>
           <a href="#servicios">Servicios</a>
-          <a href="#precios">Precios</a>
-          <a href="#trabajos">Trabajos</a>
-          <a href="#faq">Preguntas</a>
         </nav>
-        <div class="visit">
-          <a [href]="mapsLink()" target="_blank" rel="noopener"><mat-icon>location_on</mat-icon>Cómo llegar</a>
-          <a [href]="instagram()" target="_blank" rel="noopener"><mat-icon>chat</mat-icon>&#64;nailstudio_cherryblossom</a>
-        </div>
         @if (hours().length) {
           <ul class="hours" aria-label="Horario">
             @for (h of hours(); track h.days) {
@@ -54,7 +71,7 @@ export interface Hours {
       overflow: hidden;
       margin-top: 3rem;
       padding: 2.25rem 1.25rem 0.75rem;
-      background: #8d4d63;
+      background: #4a3036;
       color: #fff;
     }
 
@@ -64,7 +81,7 @@ export interface Hours {
       left: 0;
       width: 100%;
       height: 28px;
-      fill: var(--blush, #fdeef4);
+      fill: var(--blush, #faf5f2);
       transform: scaleY(-1);
     }
 
@@ -89,20 +106,25 @@ export interface Hours {
 
     .brand {
       margin: 0;
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.1rem;
+      font-family: Outfit, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
       line-height: 1.1;
     }
 
-    .about p:not(.brand) {
-      margin: 0 0 0.6rem;
+    .socials {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.9rem;
     }
 
     .social {
       display: inline-grid;
       place-items: center;
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 50%;
@@ -112,7 +134,7 @@ export interface Hours {
     .social:hover,
     .social:focus-visible {
       background: #fff;
-      color: #8d4d63;
+      color: #4a3036;
     }
 
     .right {
@@ -122,7 +144,6 @@ export interface Hours {
     }
 
     nav,
-    .visit,
     .hours {
       display: flex;
       flex-wrap: wrap;
@@ -135,19 +156,18 @@ export interface Hours {
 
     a {
       color: #fff;
+      text-decoration: none;
     }
 
     nav a {
       font-weight: 500;
     }
 
-    nav a:hover,
-    .visit a:hover {
+    nav a:hover {
       text-decoration: underline;
       text-underline-offset: 4px;
     }
 
-    .visit a,
     .hours li {
       display: inline-flex;
       align-items: center;
@@ -155,11 +175,6 @@ export interface Hours {
       font-size: 0.9rem;
     }
 
-    .visit a {
-      padding: 0.3rem 0.8rem;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 999px;
-    }
 
     mat-icon {
       width: 18px;
@@ -167,10 +182,9 @@ export interface Hours {
       font-size: 18px;
     }
 
-    .social mat-icon {
-      width: 22px;
-      height: 22px;
-      font-size: 22px;
+    .social svg {
+      width: 20px;
+      height: 20px;
     }
 
     a:focus-visible {
@@ -197,8 +211,11 @@ export interface Hours {
         justify-items: center;
       }
 
+      .socials {
+        justify-content: center;
+      }
+
       nav,
-      .visit,
       .hours {
         justify-content: center;
       }
@@ -207,7 +224,8 @@ export interface Hours {
 })
 export class SiteFooter {
   readonly instagram = input.required<string>();
-  readonly mapsLink = input.required<string>();
+  readonly facebook = input('');
+  readonly whatsapp = input('');
   /** Vacío oculta el horario. */
   readonly hours = input<Hours[]>([]);
 }

@@ -7,7 +7,7 @@
       name="description"
       content="Cherry Blossom, salón de uñas. Manicure, pedicure, esmaltado y diseño de uñas a mano. El arte está en ti. Agenda tu cita por Instagram."
     />
-    <meta name="theme-color" content="#c45378" />
+    <meta name="theme-color" content="#9c4a5f" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_MX" />
     <meta property="og:title" content="Cherry Blossom Nail Studio · El arte está en ti" />
@@ -17,17 +17,19 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <style>
+      /* Pantalla de carga: una flor que se abre y se desvanece. */
       #splash {
         position: fixed;
         inset: 0;
         z-index: 100;
         display: grid;
         place-items: center;
-        background: #fdeef4;
-        transition: opacity 0.5s;
+        background: #fedbe7;
+        transition: opacity 0.6s, filter 0.6s;
       }
       #splash.hide {
         opacity: 0;
+        filter: blur(6px);
         pointer-events: none;
       }
       #splash svg {
@@ -35,12 +37,12 @@
         height: 120px;
       }
       #splash ellipse {
-        fill: #f4b6cb;
+        fill: #e690ad;
         transform-origin: 50px 50px;
         animation: bloom 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
       }
       #splash circle {
-        fill: #c45378;
+        fill: #9c4a5f;
       }
       @keyframes bloom {
         from {
@@ -72,11 +74,13 @@
     </script>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -100,8 +104,8 @@
         const s = document.getElementById('splash');
         setTimeout(() => {
           s.classList.add('hide');
-          setTimeout(() => s.remove(), 600);
-        }, 700);
+          setTimeout(() => s.remove(), 700);
+        }, 800);
       });
     </script>
     <app-root></app-root>

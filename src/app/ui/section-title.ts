@@ -1,15 +1,13 @@
 import { Component, input } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-section-title',
-  imports: [MatIcon],
   template: `
-    <p class="kicker">{{ kicker() }}</p>
+    @if (kicker()) {
+      <p class="kicker">{{ kicker() }}</p>
+    }
     <h2>{{ title() }} @if (accent()) {<em>{{ accent() }}</em>}</h2>
-    <span class="divider" aria-hidden="true">
-      <mat-icon>local_florist</mat-icon>
-    </span>
+    <span class="divider" aria-hidden="true"></span>
     @if (subtitle()) {
       <p class="sub">{{ subtitle() }}</p>
     }
@@ -24,46 +22,33 @@ import { MatIcon } from '@angular/material/icon';
     .kicker {
       margin: 0;
       color: var(--accent);
-      font-family: 'Great Vibes', cursive;
-      font-size: 2rem;
+      font-family: Outfit, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
       line-height: 1.1;
     }
 
     h2 {
       margin: 0 0 0.4rem;
+      font-weight: 400;
+      color: var(--olive);
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.4rem, 5vw, 3.2rem);
       line-height: 1.05;
     }
 
     em {
-      color: var(--accent);
+      color: var(--olive);
     }
 
     .divider {
-      position: relative;
-      margin-top: 0.25rem;
-      display: inline-block;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 60px;
-      height: 2px;
-      background: var(--petal);
-    }
-
-    .divider::before {
-      right: calc(100% + 10px);
-    }
-
-    .divider::after {
-      left: calc(100% + 10px);
+      display: block;
+      width: 48px;
+      height: 1px;
+      margin: 1.1rem auto 0;
+      background: var(--gold);
     }
 
     .sub {
@@ -73,9 +58,9 @@ import { MatIcon } from '@angular/material/icon';
   `,
 })
 export class SectionTitle {
-  readonly kicker = input.required<string>();
+  readonly kicker = input('');
   readonly title = input('');
-  /** Palabra final en cursiva rosa. */
+  /** Palabra final en cursiva. */
   readonly accent = input('');
   readonly subtitle = input('');
 }
