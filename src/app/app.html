@@ -40,7 +40,7 @@
       </h1>
       <p class="lead">La belleza está en los detalles y tus manos merecen brillar. Un espacio donde la elegancia, la creatividad y el amor por las uñas se unen para resaltar tu belleza.</p>
       <div class="actions">
-        <a class="btn" [href]="instagram" target="_blank" rel="noopener"><mat-icon>calendar_month</mat-icon>Agenda tu cita</a>
+        <a class="btn" [href]="whatsappUrl()" target="_blank" rel="noopener"><mat-icon>calendar_month</mat-icon>Agenda tu cita</a>
       </div>
     </div>
     <img class="hero-logo" ngSrc="logo.png" width="960" height="960" alt="Logo de Cherry Blossom" priority />
@@ -87,7 +87,7 @@
 
 
   <section id="contacto" class="alt" appReveal>
-    <app-section-title kicker="Contacto" title="Cómo" accent="encontrarnos" />
+    <app-section-title kicker="Contacto" title="¿Cómo" accent="encontrarnos?" />
     <div class="map-frame">
       <iframe
         title="Ubicación de Cherry Blossom en Google Maps"
@@ -105,7 +105,7 @@
 
 <app-site-footer [instagram]="instagram" [facebook]="facebook" [whatsapp]="whatsapp() ? whatsappUrl() : ''" [hours]="hours" />
 
-<a class="btn sticky-cta" [class.show]="pastHero()" [href]="instagram" target="_blank" rel="noopener"><mat-icon>calendar_month</mat-icon>Agenda tu cita</a>
+<a class="btn sticky-cta" [class.show]="pastHero()" [href]="whatsappUrl()" target="_blank" rel="noopener"><mat-icon>calendar_month</mat-icon>Agenda tu cita</a>
 
 @if (whatsapp()) {
   <a class="wa-float" [href]="whatsappUrl()" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">

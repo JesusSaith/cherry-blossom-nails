@@ -216,6 +216,12 @@ h3 {
   border: 1px solid var(--petal);
 }
 
+.ghost:hover,
+.ghost:focus-visible {
+  color: #fff;
+  border-color: var(--ink);
+}
+
 .center {
   text-align: center;
 }
